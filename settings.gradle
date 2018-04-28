@@ -1,0 +1,6 @@
+rootProject.name = 'cointracker'
+
+include('app')
+include('datalayer')
+include('servicelayer')
+include('viewobject')

@@ -1,0 +1,36 @@
+buildscript {
+    repositories { mavenCentral() }
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    baseName = 'coinfi-app'
+    version = '1.0.0'
+    manifest {
+        attributes("Main-Class": "hu.trobi.coinfi.Application")
+    }
+}
+
+processResources {
+    if(project.hasProperty("dev")) {
+        from '../profiles/dev'
+    }else{
+        from '../profiles/production'
+    }
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    compile project(':datalayer')
+    compile project(':servicelayer')
+
+}

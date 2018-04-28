@@ -1,0 +1,12 @@
+
+server:
+  ip: 127.0.0.1
+  port: 80
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/cointracker?useUnicode:yes&charset:UTF8&characterEncoding:UTF-8&characterSetResults:UTF-8&useLegacyDatetimeCode:false&serverTimezone:UTC
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    database-platform: org.hibernate.dialect.MySQL5Dialect
